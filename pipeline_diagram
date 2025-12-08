@@ -1,0 +1,22 @@
+// Final ML Pipeline
+digraph {
+	rankdir=LR size="10,5"
+	A [label="Raw Input Features
+(170 variables)"]
+	B [label="Missingness Filter
+(≤ 30% NaN)"]
+	C [label="SimpleImputer
+(median)"]
+	D [label=StandardScaler]
+	E [label="SelectKBest
+(ANOVA, k=120)"]
+	F [label="XGBoost Classifier
+(depth=3, LR≈0.07)"]
+	G [label=Predictions]
+	A -> B
+	B -> C
+	C -> D
+	D -> E
+	E -> F
+	F -> G
+}
